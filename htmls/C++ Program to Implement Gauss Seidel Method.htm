@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/osd.js"></script><script type="text/javascript" async="" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/publishertag.js"></script><style type="text/css">.mui-textfield.mui-textfield--float-label > label {-webkit-transition:all .15s ease-out;-moz-transition:all .15s ease-out;-o-transition:all .15s ease-out;transition:all .15s ease-out;}</style><style type="text/css">@keyframes mui-btn-inserted{from{transform:none;}to{transform:none;}}.mui-btn{animation-duration:0.0001s;animation-name:mui-btn-inserted;}@keyframes mui-dropdown-inserted{from{transform:none;}to{transform:none;}}[data-mui-toggle="dropdown"]{animation-duration:0.0001s;animation-name:mui-dropdown-inserted;}@keyframes mui-btn-inserted,mui-dropdown-inserted{from{transform:none;}to{transform:none;}}.mui-btn[data-mui-toggle="dropdown"]{animation-duration:0.0001s;animation-name:mui-btn-inserted,mui-dropdown-inserted;}@keyframes mui-tab-inserted{from{transform:none;}to{transform:none;}}[data-mui-toggle="tab"]{animation-duration:0.0001s;animation-name:mui-tab-inserted;}@keyframes mui-textfield-inserted{from{transform:none;}to{transform:none;}}.mui-textfield > input{animation-duration:0.0001s;animation-name:mui-textfield-inserted;}@keyframes mui-textfield-inserted{from{transform:none;}to{transform:none;}}.mui-textfield > textarea{animation-duration:0.0001s;animation-name:mui-textfield-inserted;}@keyframes mui-select-inserted{from{transform:none;}to{transform:none;}}.mui-select > select{animation-duration:0.0001s;animation-name:mui-select-inserted;}@keyframes mui-node-inserted{from{transform:none;}to{transform:none;}}.mui-select > select ~ .mui-event-trigger{animation-duration:0.0001s;animation-name:mui-node-inserted;}@keyframes mui-node-disabled{from{transform:none;}to{transform:none;}}.mui-select > select:disabled ~ .mui-event-trigger{animation-duration:0.0001s;animation-name:mui-node-disabled;}</style>
+<title>C++ Program to Implement Gauss Seidel Method</title>
+<meta charset="utf-8">
+<meta name="description" content="Gauss Seidel method is used to solve linear system of equations in iterative method. This is a C++ Program to Implement Gauss Seidel Method.AlgorithmBegin
+&nbsp; &nbsp; ...">
+<meta name="keywords" content="C, C++, Python, Java, HTML, CSS, JavaScript, SQL, PHP, jQuery, XML, DOM, Bootstrap, Tutorials, Articles, Programming, training, learning, quiz, preferences, examples, code">
+<link rel="canonical" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/cplusplus-program-to-implement-gauss-seidel-method_004.htm">
+<link rel="shortcut icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<link rel="stylesheet" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/style-min-v1.css">
+<script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/rules-p-54Nt-1NAaEEe0.js" async=""></script><script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/quant.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/analytics.js"></script><script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/script-min-v1.js"></script><link rel="stylesheet" type="text/css" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/prettify.css">
+<script>
+function printPage() { window.print(); }
+function readCookie(name) {
+     var nameEQ = name + "=";
+     var ca = document.cookie.split(';');
+     for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+     }
+     return null;
+}
+</script>
+<script id="adp1" data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//cdn.adpushup.com/40046/adpushup.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script><script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/adpushup.js" type="text/javascript" async=""></script>
+<script id="adp2" data-cfasync="false" type="text/javascript">(function(w, d) {var cval = readCookie('subscription_purchased');if(cval == '1'){ return; } var s = d.createElement('script'); s.src = '//delivery.adrecover.com/18107/adRecover.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script><script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/adRecover.js" type="text/javascript" async=""></script>
+<link rel="stylesheet" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/style-qa.css">
+<style>
+.right-menu .mui-btn {
+    background-color:#b82051;
+}
+a.demo {
+    background:#b82051;
+}
+li.heading {
+    background:#b82051;
+}
+.course-box{background:#b82051}
+.home-intro-sub p{color:#b82051}
+a.demo::parent{
+  text-align: right;
+}
+a.demo{
+   top: 25px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/prettify.css"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script type="text/javascript" async="" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/jquery-2.js"></script><script type="text/javascript" async="" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/pb.js"></script><script type="text/javascript" async="" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/quantcast.js"></script><script type="text/javascript">
+            // refreshTypes: {
+//     1: "Active View", -> this is default
+//     2: "Active Tab",
+//     3: "BG"
+// }
+!(function () {
+	var REFRESH_COUNTRY_MAP = {
+		US: {
+			//This is the country code where the given refesh is supposed to be applicable. To make it applicable across all countries use "default" in place of country code
+			refreshInterval: 45, // this is in seconds
+			refreshType: 3,
+			sectionIdsToRefresh: [] //in case sectionIdsToRefresh list is empty it will be applicable on units/sections
+		},
+GB: {
+			//This is the country code where the given refesh is supposed to be applicable. To make it applicable across all countries use "default" in place of country code
+			refreshInterval: 60, // this is in seconds
+			refreshType: 3,
+			sectionIdsToRefresh: [] //in case sectionIdsToRefresh list is empty it will be applicable on units/sections
+		},
+CA: {
+			//This is the country code where the given refesh is supposed to be applicable. To make it applicable across all countries use "default" in place of country code
+			refreshInterval: 60, // this is in seconds
+			refreshType: 3,
+			sectionIdsToRefresh: [] //in case sectionIdsToRefresh list is empty it will be applicable on units/sections
+		},
+		default: {
+			refreshInterval: 30,
+			refreshType: 2
+		}
+	};
+	var adpushup = window.adpushup || {};
+    adpushup.que = window.adpushup.que || [];
+	adpushup.que.push(function () {
+		var customRefreshConfig = REFRESH_COUNTRY_MAP[adpushup.config.country] || REFRESH_COUNTRY_MAP['default'];
+		customRefreshConfig.refreshType = customRefreshConfig.refreshType || REFRESH_COUNTRY_MAP['default'].refreshType;
+		customRefreshConfig.refreshInterval =
+			customRefreshConfig.refreshInterval || REFRESH_COUNTRY_MAP['default'].refreshInterval;
+		if (window.location.search.indexOf('apDebug=true') !== -1) {
+			window.currentRefreshConfig = customRefreshConfig;
+			window.REFRESH_COUNTRY_MAP = REFRESH_COUNTRY_MAP;
+		}
+		var isUnitToBeRefreshed = function (sectionId, sectionIdsToRefresh) {
+			return !sectionIdsToRefresh.length || sectionIdsToRefresh.indexOf(sectionId) !== -1;
+		};
+		var setupRefreshIntervalTimeForUnits = function (customRefreshConfig) {
+			// Handle refreshInterval Innovative ads
+			adpushup.config.innovativeAds.forEach(function (ad) {
+				if (ad.networkData.refreshSlot && isUnitToBeRefreshed(ad.id, customRefreshConfig.sectionIdsToRefresh)) {
+					ad.networkData.refreshInterval = customRefreshConfig.refreshInterval;
+				}
+			});
+			// Handle refreshInterval Manual Ads
+			adpushup.config.manualAds.forEach(function (ad, i) {
+				if (ad.networkData.refreshSlot && isUnitToBeRefreshed(ad.id, customRefreshConfig.sectionIdsToRefresh)) {
+					ad.networkData.refreshInterval = customRefreshConfig.refreshInterval;
+				}
+			});
+			//Handle refreshInterval Layout Ads
+			var experiment = adpushup.config.experiment;
+			for (var device in experiment) {
+				for (var page_group in experiment[device]) {
+					experiment[device][page_group].variations.forEach(function (variation, j) {
+						variation.ads.forEach(function (ad) {
+							if (
+								ad.networkData.refreshSlot &&
+								isUnitToBeRefreshed(ad.id, customRefreshConfig.sectionIdsToRefresh)
+							) {
+								ad.networkData.refreshInterval = customRefreshConfig.refreshInterval;
+							}
+						});
+					});
+				}
+			}
+		};
+		var setupUtilsCheckElementInViewPercentFn = function (customRefreshConfig) {
+			var utils = window.adpushup.utils;
+			var originalCheckElementInViewPercent = utils.checkElementInViewPercent.bind(utils);
+			//overwrite the function
+			window.adpushup.utils.checkElementInViewPercent = function (el) {
+				var $el = window.adpushup.$(el);
+				var elementOrigId = !!$el.data() ? $el.data().origId : '';
+				if (elementOrigId && isUnitToBeRefreshed(elementOrigId, customRefreshConfig.sectionIdsToRefresh)) {
+					switch (customRefreshConfig.refreshType) {
+						case 1:
+							utils.log(`ActiveView Refresh for ${elementOrigId}`);
+							return originalCheckElementInViewPercent(el);
+						case 2:
+							utils.log(`ActiveTab refresh for ${elementOrigId}`);
+							if (document.hasFocus()) {
+								return true;
+							}
+							break;
+						case 3:
+							utils.log(`BG refresh for ${elementOrigId}`);
+							return true;
+							break;
+					}
+				} else {
+					utils.log(`ActiveView refresh for ${elementOrigId}`);
+					return originalCheckElementInViewPercent(el);
+				}
+			};
+		};
+		if (customRefreshConfig && customRefreshConfig.sectionIdsToRefresh) {
+			setupRefreshIntervalTimeForUnits(customRefreshConfig);
+			setupUtilsCheckElementInViewPercentFn(customRefreshConfig);
+		}
+	});
+})();
+
+!(function () {
+  window._apPbJs = window._apPbJs || {};
+  window._apPbJs.que = window._apPbJs.que || [];
+  var enabledBidders = adpushup.utils.getQueryParams().enabledBidders;
+  if (enabledBidders) {
+    enabledBiddersArray = enabledBidders.split(",");
+    window.adpushup.utils.log(enabledBiddersArray);
+    window._apPbJs.que.push(function () {
+      window._apPbJs.onEvent("beforeRequestBids", function (adunits) {
+        var filteredAdUnits = [];
+        for (var i = 0; i < adunits.length; i++) {
+          var bidders = [];
+          var adUnit = adunits[i];
+          var adUnitBids = adUnit.bids;
+          for (var j = 0; j < adUnitBids.length; j++) {
+            if (enabledBiddersArray.indexOf(adUnitBids[j].bidder) !== -1) {
+              bidders.push(adUnitBids[j]);
+            }
+          }
+          adUnit.bids = bidders;
+          filteredAdUnits.push(adUnit);
+        }
+        adunits = filteredAdUnits;
+      });
+    });
+  }
+})();
+!(function () {
+  window._apPbJs = window._apPbJs || {};
+  window._apPbJs.que = window._apPbJs.que || [];
+  var bidderFilter = function (adunits) {
+    console.log(adunits);
+  };
+  var auctionEndCallback = function (auction) {
+    window.adpushup.utils.log(auction);
+  };
+  window._apPbJs.que.push(function () {
+    // window._apPbJs.onEvent("beforeRequestBids", bidderFilter);
+    window._apPbJs.onEvent("auctionEnd", auctionEndCallback);
+  });
+})();
+
+
+
+            
+
+/*IL_JOB_STARTS*/
+
+!(function () {
+	//avoid message trigger twice for pnp accounts
+	if (window.IL_MessageTriggered) return;
+	var adpushup = window.adpushup || {};
+	adpushup.que = adpushup.que || [];
+	adpushup.que.push(function () {
+		var w = window;
+		var ap = adpushup;
+		var EU_COUNTRY_LIST = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','GB','GF','GP','MQ','ME','YT','RE','MF','GI','AX','PM','GL','BL','SX','AW','CW','WF','PF','NC','TF','AI','BM','IO','VG','KY','FK','MS','PN','SH','GS','TC','AD','LI','MC','SM','VA','JE','GG','GI'];
+		if (EU_COUNTRY_LIST.includes(ap.config.country)) return;
+		var utils = ap.utils;
+		utils.log('Impression Logging (IL) started.');
+		var impressionLoggingKey = 'IL_';
+		var iframeFound = false;
+		var dataEventName = 'data';
+		var errorEventName = 'error';
+		var cdnorigin_domain = 'https://cdn.adpushup.com';
+		var adpushup_client = 'https://client.adpushup.com';
+		var logging_endpoint = 'https://aplogger.adpushup.com/log';
+		var message = {
+			origin: adpushup_client,
+			userId: ap.config.packetId
+		};
+		function generateUniqueId() {
+			return (
+				'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+					var r = (Math.random() * 16) | 0,
+						v = c == 'x' ? r : (r & 0x3) | 0x8;
+					return v.toString(16);
+				}) +
+				'-' +
+				new Date().valueOf()
+			);
+		}
+		function isParsableJson(str) {
+			try {
+				JSON.parse(str);
+			} catch (e) {
+				return false;
+			}
+			return true;
+		}
+		function triggerRequest(eventName, data) {
+			if (isParsableJson(data)) {
+				var stringJson = data;
+			} else {
+				var stringJson = JSON.stringify(data);
+				//stringifying the error object returns empty object
+				//https://stackoverflow.com/questions/18391212/is-it-not-possible-to-stringify-an-error-using-json-stringify
+				if (stringJson === '{}')
+					stringJson = JSON.stringify(data, Object.getOwnPropertyNames(data));
+			}
+			var encodedStringJson = btoa(stringJson);
+			var pixel = document.createElement('img');
+			pixel.src =
+				logging_endpoint +
+				'?event=' +
+				impressionLoggingKey +
+				eventName +
+				'&data=' +
+				encodedStringJson;
+			utils.log('IL request triggered.' + stringJson);
+		}
+		function checkIframe() {
+			if (w.IL_MessageTriggered) return;
+			utils.log('IL checking if Iframe already exists.');
+			var iframes = document.getElementsByTagName('iframe');
+			for (var i = 0; i < iframes.length; i++) {
+				var ifm = iframes[i];
+				if (ifm.src.includes(cdnorigin_domain)) {
+					var iframe = ifm;
+					iframeFound = true;
+					break;
+				}
+			}
+			if (!iframeFound) return;
+			triggerMessage(iframe);
+		}
+		function createIframe() {
+			utils.log('IL iframe not found. Creating new iframe.');
+			return new Promise(function (resolve, reject) {
+				var ifm = document.createElement('iframe');
+				ifm.src = cdnorigin_domain + '/02/IL_.html';
+				ifm.style.cssText = 'display:none; width:0; height:0;';
+				ifm.onload = function () {
+					resolve(ifm);
+				};
+				ifm.onerror = function () {
+					reject();
+				};
+				(document.body || document.head).appendChild(ifm);
+			});
+		}
+		function generateImpressionLoggingJson(trackerObj) {
+			var uniqueId = generateUniqueId();
+			var adpushup = window.adpushup || {};
+
+			var obj = {
+				country: ap.config.country,
+				date: Date.now(),
+				domain: w.location.hostname,
+				pathname: w.location.pathname,
+				platform: ap.config.platform,
+				siteId: ap.config.siteId,
+				uniqueId: uniqueId,
+				activeEvents: adpushup.activeEvents || "",
+				runningEvents: adpushup.runningEvents || ""
+			};
+			trackerObj = Object.assign(trackerObj, obj);
+			return trackerObj;
+		}
+		function attachListeners() {
+			w.addEventListener('message', function (e) {
+				var origin = cdnorigin_domain;
+				if (e.origin !== origin) return;
+				if (!isParsableJson(e.data)) return;
+				var trackerObj = JSON.parse(e.data);
+				if (!trackerObj) return;
+				if (!trackerObj.userId) trackerObj.userId = ap.config.packetId;
+				utils.log('IL message received from iframe.');
+				if (!!trackerObj['origin']) delete trackerObj['origin'];
+				trackerObj = generateImpressionLoggingJson(trackerObj);
+				triggerRequest(dataEventName, trackerObj);
+			});
+		}
+		function triggerMessage(ifm) {
+			if (w.IL_MessageTriggered) return;
+			w.IL_MessageTriggered = true;
+			utils.log('IL message sent to iframe.');
+			ifm.contentWindow.postMessage(JSON.stringify(message), cdnorigin_domain);
+		}
+		try {
+			attachListeners();
+			checkIframe();
+			if (w.IL_MessageTriggered) return;
+			createIframe()
+				.then(function (ifm) {
+					utils.log('IL iframe created.');
+					triggerMessage(ifm);
+				})
+				.catch(function (error) {
+					if (error === undefined)
+						error = {
+							message:
+								'Custom error message. Error in createIframe(), could be because of promise rejection'
+						};
+					utils.log('IL error in iframe creation.' + error);
+					triggerRequest(errorEventName, error);
+				});
+		} catch (error) {
+			utils.log('IL error in execution.' + error);
+			triggerRequest(errorEventName, error);
+		}
+	});
+})();
+
+/*IL_JOB_ENDS*/
+
+        </script><script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/gpt.js" async=""></script><script async="" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/apstag.js"></script><script type="text/javascript">(function($){ 
+ var $els = $('div[id^="STICKY"]');
+    $els.each(function(i,$el){
+        var span = $('<span style="cursor:pointer; position: absolute; top: -20px; right: 0; background: rgba(255,255,255,0.3); color: #000; padding: 0 5px;"> Close</span>');
+        $($el).append(span);
+        span.on('click',function(){
+            $(this).parents('.adp_interactive_ad').remove();
+        })
+    })
+ })(adpushup.$)</script><meta http-equiv="origin-trial" content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/pubads_impl_2021080901.js" async=""></script><link rel="preload" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js" as="script"><script type="text/javascript" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js"></script><link rel="preload" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js" as="script"><script type="text/javascript" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js"></script><link rel="preload" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js" as="script"><script type="text/javascript" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js"></script><link rel="preload" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js" as="script"><script type="text/javascript" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js"></script><link rel="preload" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js" as="script"><script type="text/javascript" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js"></script><link rel="preload" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js" as="script"><script type="text/javascript" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/integrator.js"></script></head>
+<body data-new-gr-c-s-check-loaded="8.881.0" data-gr-ext-installed="" cz-shortcut-listen="true"><div id="MathJax_Message" style="display: none;"></div>
+<header id="header" class="fixed">
+<!-- pop-up -->
+<div class="pop-modal overlay-pop popdiv" style="display: none;">
+<div class="modal-window small">
+<span class="close" title="close">×</span>
+<div class="pop-content">
+</div>
+<span class="msg"></span>
+</div>
+</div>
+<div class="wrap_loader">
+</div>
+<input type="hidden" id="vu" name="vu" value="">
+<!-- pop-up -->
+<!-- Top sub-menu Starts Here -->
+<div class="mui-appbar mui-container-fulid top-menu">
+<div class="mui-container">
+<div class="top-menu-item home">
+<a href="https://www.tutorialspoint.com/index.htm" target="_blank" title="TutorialsPoint - Home"><i class="fal fa-home"></i> <span>Home</span></a>
+</div>
+<div class="top-menu-item qa">
+<a href="https://www.tutorialspoint.com/about/about_careers.htm" target="_blank" title="Job @ Tutorials Point"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+</div>
+<div class="top-menu-item tools">
+<a href="https://www.tutorialspoint.com/online_dev_tools.htm" target="_blank" title="Tools - Online Development and Testing Tools"><i class="fal fa-cogs"></i> <span>Tools</span></a>
+</div>
+<div class="top-menu-item coding-ground">
+<a href="https://www.tutorialspoint.com/codingground.htm" target="_blank" title="Coding Ground - Free Online IDE and Terminal"><i class="fal fa-code"></i> <span>Coding Ground </span></a> 
+</div>
+<div class="top-menu-item current-affairs">
+<a href="https://www.tutorialspoint.com/current_affairs.htm" target="_blank" title="Daily Current Affairs"><i class="fal fa-layer-plus"></i> <span>Current Affairs</span></a>
+</div>
+<div class="top-menu-item upsc-notes">
+<a href="https://www.tutorialspoint.com/upsc_ias_exams.htm" target="_blank" title="UPSC IAS Exams Notes - TutorialsPoint"><i class="fal fa-user-tie"></i> <span>UPSC Notes</span></a>
+</div>      
+<div class="top-menu-item articles">
+<a href="https://www.tutorialspoint.com/tutor_connect/index.php" target="_blank" title="Top Online Tutors - Tutor Connect"><i class="fal fa-user"></i> <span>Online Tutors</span></a>
+</div>
+<div class="top-menu-item whiteboard">
+<a href="https://www.tutorialspoint.com/whiteboard.htm" target="_blank" title="Free Online Whiteboard"><i class="fal fa-chalkboard"></i> <span>Whiteboard</span></a>
+</div>
+<!--<div class="top-menu-item net-meeting">
+<a href="https://www.tutorialspoint.com/netmeeting.php" target="_blank" title="A free tool for online video conferencing"><i class="fal fa-chalkboard-teacher"></i> <span>Net Meeting</span></a> 
+</div>-->
+<div class="top-menu-item articles">
+<a href="https://www.tutorix.com/" target="_blank" title="Tutorx - The Best Learning App" rel="nofollow"><i class="fal fa-video"></i> <span>Tutorix</span></a> 
+</div>  
+<div class="top-menu-item net-meeting">
+<a href="https://www.tutorialspoint.com/market/login.jsp?v=1.3" target="_blank" title="Login TutorialsPoint"><i class="fal fa-sign-in-alt"></i> <span>Login</span></a> 
+</div> 
+     
+<div class="social-menu-item">
+<a href="https://www.facebook.com/tutorialspointindia" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Facebook"><i class="fab fa-facebook-f"></i></a> 
+<a href="https://www.twitter.com/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Twitter"><i class="fab fa-twitter"></i></a>
+<a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Linkedin"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint YouTube"><i class="fab fa-youtube"></i></a>
+</div>        
+</div>
+</div>
+<!-- Top sub-menu Ends Here -->
+<!-- Top main-menu Starts Here -->
+<div class="mui-appbar mui-container-fulid mui--appbar-line-height mui--z1 sticky" id="logo-menu">
+<div class="mui-container">
+<div class="left-menu">
+<a href="https://www.tutorialspoint.com/index.htm" title="Tutorialspoint">
+<img class="tp-logo" alt="tutorialspoint" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/logo.png">
+</a>
+<div class="mui-dropdown">
+<a class="mui-btn mui-btn--primary categories" data-mui-toggle="dropdown"><i class="fa fa-th-large"></i> 
+<span>Categories <span class="mui-caret"></span></span></a>            
+<ul class="mui-dropdown__menu cat-menu">
+<li>
+<ul>
+<li><a href="https://www.tutorialspoint.com/questions/category/java8"><i class="fa fa-caret-right"></i> Java</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/jsp"><i class="fa fa-caret-right"></i> JSP</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/ios"><i class="fa fa-caret-right"></i> iOS</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/html"><i class="fa fa-caret-right"></i> HTML</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/android"><i class="fa fa-caret-right"></i> Android</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/python"><i class="fa fa-caret-right"></i> Python</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/c"><i class="fa fa-caret-right"></i> C Programming</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/cplusplus"><i class="fa fa-caret-right"></i> C++ Programming</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/csharp"><i class="fa fa-caret-right"></i> C#</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/php"><i class="fa fa-caret-right"></i> PHP</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/css"><i class="fa fa-caret-right"></i> CSS</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/javascript"><i class="fa fa-caret-right"></i> Javascript</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/jquery"><i class="fa fa-caret-right"></i> jQuery</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/sap"><i class="fa fa-caret-right"></i> SAP</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/sap-hana"><i class="fa fa-caret-right"></i> SAP HANA</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/data-structure"><i class="fa fa-caret-right"></i> Data Structure</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/rdbms"><i class="fa fa-caret-right"></i> RDBMS</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/mysql"><i class="fa fa-caret-right"></i> MySQL</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/mathematics"><i class="fa fa-caret-right"></i> Mathematics</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/8085"><i class="fa fa-caret-right"></i> 8085 Microprocessor</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/operating-system"><i class="fa fa-caret-right"></i> Operating System</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/digital-electronics"><i class="fa fa-caret-right"></i> Digital Electronics</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/analysis-of-algorithms"><i class="fa fa-caret-right"></i> Analysis of Algorithms</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/mobile-development"><i class="fa fa-caret-right"></i> Mobile Development</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/front-end-technology"><i class="fa fa-caret-right"></i> Front End </a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/web-development"><i class="fa fa-caret-right"></i> Web Development</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/selenium"><i class="fa fa-caret-right"></i> Selenium</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/mongodb"><i class="fa fa-caret-right"></i> MongoDB</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/computer-network"><i class="fa fa-caret-right"></i> Computer Network</a></li>
+<li><a href="https://www.tutorialspoint.com/questions/category/general-topics"><i class="fa fa-caret-right"></i> General Topics</a></li>
+</ul>
+</li>
+</ul>
+<div class="clear"></div>
+</div> 
+</div>
+<div class="right-menu">
+<div class="toc-toggle">
+<a href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+</div>
+<div class="mobile-search-btn">
+<a href="https://www.tutorialspoint.com/index.htm"><i class="fal fa-search"></i></a>
+</div>
+<div class="search-box-wrap">
+	<div class="search-box" style="">
+		<div>
+			<input class="input" type="text" id="search-strings" name="key" placeholder="Search latest courses, ebooks and prime packs..." autocomplete="off">
+			<button id="btnSearch"><i class="fa fa-search" title="Search"></i></button>
+		</div>
+	</div>		
+	<div class="search-box" id="search-results" style="display: none;"></div>
+	<div class="clear"></div>
+	<script>
+		$('#search-strings').keyup(function () {
+			var keyword = $('#search-strings').val();
+			if (keyword != "" && keyword.length > 2) {
+				$.ajax({
+					url:"https://search.tutorialspoint.com/market_urls_suggestion.php",
+					method: "POST",
+               type: 'POST',
+					dataType: "json",
+               cache:false,
+					data: {
+						'keyword': keyword
+					},
+					error: function (err) {
+						console.log ( err );
+					},
+					success: function (data) {
+						if (data.length > 0) {
+					//var str = '<div class="search_title arrow_search">Search Results</div><ul>';
+					var str = '<div class="search-overlay"><ul>';
+					data.forEach((item) => {
+					   var iconStr = '<i class="fa fa-play-circle"></i>';
+					   if(item.type=='E'){
+						  iconStr = '<i class="fa fa-file-pdf"></i>';
+					   }
+					   if(item.type=='B'){
+						  iconStr = '<i class="fa fa-cubes"></i>';
+					   }
+					   if(item.type=='A' || item.type=='I' || item.type=='P'){ // profile/author/instructor
+						  iconStr = '<i class="fa fa-user"></i>';
+					   }
+					   str = str + '<a href="'+item.url+'" target="_blank"><li class="clsHeadQuestion">'+iconStr+' '+item.name+'</li></a>'; 
+					});
+					str = str + '</ul><br/></div><div class="clear"></div>';
+							$('#search-results').show();
+							$('#search-results').html(str);
+						} else {
+							$('#search-results').hide();
+							$('#search-results').html('');
+						}
+					}
+				});
+			}else{
+				$('#search-results').hide();
+				$('#search-results').html('');
+			}
+		});
+	 $('#btnSearch').click(function(){
+		   var keyword = $('#search-strings').val();
+		   window.location.href = "https://www.tutorialspoint.com/search/"+keyword;
+	 });
+	 $(document).mouseup(function(e) 
+	 {
+		 var container = $('#search-results');            
+		 if (!container.is(e.target) && container.has(e.target).length === 0) 
+		 {
+			 container.hide();
+		 }
+	 });
+	</script>
+</div>
+<div class="menu-btn library-btn">
+<a href="https://www.tutorialspoint.com/tutorialslibrary.htm"><i class="fal fa-cubes"></i> <span>Library</span></a>
+</div>
+<div class="menu-btn videos-btn">
+<a href="https://www.tutorialspoint.com/courses"><i class="fal fa-video"></i> <span>Videos</span></a> 
+</div>
+<div class="menu-btn videos-btn">
+<a href="https://www.tutorialspoint.com/questions/index.php"><i class="fa fa-location-arrow"></i> <span>Q/A</span></a>
+</div>
+<div class="menu-btn ebooks-btn">
+<a href="https://www.tutorialspoint.com/ebooks"><i class="fal fa-book"></i> <span>eBooks</span></a>
+</div>
+<div class="mui-dropdown">
+<button class="mui-btn mui-btn--primary mobile-menu" data-mui-toggle="dropdown" type="button">
+<span class="mui-caret"></span>
+</button>
+<ul class="mui-dropdown__menu">
+<li><a href="https://www.tutorialspoint.com/tutorialslibrary.htm"><i class="fal fa-cubes"></i> <span>Library</span></a></li>
+<li><a href="https://www.tutorialspoint.com/courses"><i class="fal fa-video"></i> <span>Videos</span></a></li>
+<li><a href="https://www.tutorialspoint.com/ebooks"><i class="fal fa-book"></i> <span>eBooks</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Top main-menu Ends Here -->
+</header>
+<script type="text/x-mathjax-config;executed=true">
+MathJax.Hub.Config({
+tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] },
+"HTML-CSS": {
+  linebreaks: { automatic: true, width: "container" }          
+}              
+});
+</script>
+<script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/MathJax.js" id=""> </script>
+
+<link rel="stylesheet" href="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/prettify.css">
+<style>img.fr-dib, img.fr-fic{width:auto!important; width:-webkit-fill-available; max-width:100%;}
+.tutorial-content .math{border:0px solid #d6d6d6!important; margin-bottom:0px!important; padding:0px!important; background:transparent!important;}
+pre.prettyprint{border:1px solid #ccc!important; background-color:#f1f1f1; border-radius:0; padding:5px!important; margin:0; margin-bottom:10px; margin-top:15px; font-size:13px; overflow:auto;}
+pre.result{border:1px solid #ccc; background-color:#eee; padding:5px; margin:0; margin-bottom:0; font-size:12px; overflow:auto;}
+pre.result, pre.prettyprint{border:1px solid #dedede; background-color:#f7f7f7; border-radius:0;}
+.prettyprint{background:#eee!important; border:1px solid #d6d6d6 !important;}
+pre.prettyprint{padding:5px; font-size:.95em; overflow-x:auto;}
+.result{background:#eee!important; border:1px solid #d6d6d6 !important;}
+pre.result{padding:5px; font-size:.95em; overflow-x:auto;}
+.tutorial-content table{margin-left:0px!important;}
+pre.prettyprint{width:99%!important;}
+a.demo{top:12px!important; float:right!important;}
+</style>
+<div class="mui-container-fluid content"> 
+<div class="mui-container">
+<!-- Tutorial ToC Starts Here -->
+<div class="mui-col-md-3 tutorial-toc">
+<div class="mini-logo">
+<img style="width:162px;" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/QAicon.png" alt="Technical Questions and Answers">
+</div>
+<ul class="toc chapters">
+<li class="heading big-font"><i class="fa fa-th-large"></i> Related Questions &amp; Answers</li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-gauss-jordan-elimination">C++ Program to Implement Gauss Jordan Elimination</a></li>
+<li><a href="https://www.tutorialspoint.com/Chash-Program-to-implement-Sleep-Method-Of-Thread">C# Program to implement Sleep Method Of Thread</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-vector">C++ Program to Implement Vector</a></li>
+<li><a href="https://www.tutorialspoint.com/chash-program-to-implement-fizzbuzz">C# program to implement FizzBuzz</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-stack">C++ Program to Implement Stack</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-dequeue">C++ Program to Implement Dequeue</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-queue">C++ Program to Implement Queue</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-treap">C++ Program to Implement Treap</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-trie">C++ Program to Implement Trie</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-sparse-matrix">C++ Program to Implement Sparse Matrix</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-sorted-array">C++ Program to Implement Sorted Array</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-parallel-array">C++ Program to Implement Parallel Array</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-circular-queue">C++ Program to Implement Circular Queue</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-priority-queue">C++ Program to Implement Priority Queue</a></li>
+<li><a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-euler-theorem">C++ Program to Implement Euler Theorem</a></li>
+</ul><ul class="toc reading">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+<div id="stickyparent" style="position: sticky;">
+<div style="height: 250px; width: 300px; top: 1547px;" id="sticky-ad">
+<div id="00000001-3678d082-0dc4-4a32-8437-c61feab3533e" class="_ap_apex_ad" data-section="00000001-3678d082-0dc4-4a32-8437-c61feab3533e" data-orig-id="430c9911-782f-495d-88f9-69f58ca8c9a4" data-render-time="1628828188377" style="text-align: center; margin: 10px auto; width: 300px; height: 250px; overflow: hidden; display: block;" data-ap-network="adpTags" data-refresh-time="1628828387629" data-timeout="1743">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("430c9911-782f-495d-88f9-69f58ca8c9a4");
+});
+</script>
+<div id="ADP_40046_300x250_00000001-3678d082-0dc4-4a32-8437-c61feab3533e" style="text-align: center; margin: 0 auto;" data-google-query-id="CLf87M2SrfICFZKgZgId0-AEmA">
+
+<div id="google_ads_iframe_/103512698/21875371528_0__container__" style="border: 0pt none; display: inline-block; width: 300px; height: 250px;"><iframe style="border: 0px none; vertical-align: bottom;" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/container_003.htm" id="google_ads_iframe_/103512698/21875371528_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" data-google-container-id="7" data-load-complete="true" width="300" height="250" frameborder="0"></iframe></div></div></div>
+</div>
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+<!-- Tutorial Content Starts Here -->
+<div class="mui-col-md-6 tutorial-content">
+<h1 class="qa_title">C++ Program to Implement Gauss Seidel Method</h1>
+<div class="qa_category">
+<a href="https://www.tutorialspoint.com/questions/category/Cplusplus" target="_blank"><span>C++</span></a><a href="https://www.tutorialspoint.com/questions/category/Server-Side-Programming" target="_blank"><span>Server Side Programming</span></a><a href="https://www.tutorialspoint.com/questions/category/Programming" target="_blank"><span>Programming</span></a><hr>
+<div id="adp_top_ads" style="text-align:center !important;"><div id="00000001-8f6b7fa3-2374-4448-a1b0-fdfd51da39a8" class="_ap_apex_ad" data-section="00000001-8f6b7fa3-2374-4448-a1b0-fdfd51da39a8" data-orig-id="2d1bb2c4-eb72-471d-9c80-1bf5514728c1" data-render-time="1628828188384" style="text-align: center; margin: 10px auto; width: 650px; height: 150px; overflow: hidden; display: block;" data-ap-network="adpTags"><div id="ADP_40046_650x150_00000001-8f6b7fa3-2374-4448-a1b0-fdfd51da39a8" style="text-align: center; margin: 0 auto;" data-google-query-id="CJrmyvCRrfICFZ2UZgIdmC4Jxw">
+
+<div id="google_ads_iframe_/103512698/ADP_40046_650X150_2d1bb2c4-eb72-471d-9c80-1bf5514728c1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/103512698/ADP_40046_650X150_2d1bb2c4-eb72-471d-9c80-1bf5514728c1_0" title="3rd party ad content" name="google_ads_iframe_/103512698/ADP_40046_650X150_2d1bb2c4-eb72-471d-9c80-1bf5514728c1_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" srcdoc="" data-google-container-id="2" __idm_frm__="21474836485" data-load-complete="true" width="600" height="90" frameborder="0"></iframe></div></div></div></div>
+<script>
+     var adPos = document.getElementById('adp_top_ads');
+     var ad_id_720 = "8014640d-fd34-4b2e-9b1b-cc67234a2325";
+     var ad_id_650 = "2d1bb2c4-eb72-471d-9c80-1bf5514728c1";
+     var ad_id_300 = "df94a1a9-ae2f-432d-9a92-d93823ff4503";
+     var width = window.innerWidth;
+     var ad_id = ad_id_720;
+     if( width <= 768 ){
+        ad_id =  ad_id_300;
+     }else if( width <= 1435 ){
+        ad_id =  ad_id_650;
+     }
+     adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+     var adpushup = adpushup || {};
+     adpushup.que = adpushup.que || [];
+     adpushup.que.push(function() {
+     adpushup.triggerAd(ad_id);
+     });
+</script>
+</div>
+<hr>
+<p>Gauss Seidel method is used to solve linear system of equations in 
+iterative method. This is a C++ Program to Implement Gauss Seidel 
+Method.</p><h2>Algorithm</h2><pre class="result notranslate">Begin
+&nbsp; &nbsp;Take the dimensions of the matrix p and its elements as input.
+&nbsp; &nbsp;Take the initials values of x and no of iteration q as input.
+&nbsp; &nbsp;While q&gt;0
+&nbsp; &nbsp; &nbsp; Make a for loop i = 0 to p-1
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;initialize n[i] = (b[i] / a[i][i]).
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Make a for loop i = 0 to p-1
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If (j == i)
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;n[i] = n[i] - ((a[i][j] / a[i][i]) * m[j]).
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;m[i] = n[i].
+&nbsp; &nbsp; &nbsp; Decrease q.
+&nbsp; &nbsp;/*
+&nbsp; &nbsp; &nbsp; Here, a[i][j] = input matrix.
+&nbsp; &nbsp; &nbsp; b[i] = this array takes values of the right side of equation.
+&nbsp; &nbsp; &nbsp; m[i] = stores initial values of x.
+&nbsp; &nbsp;*/
+&nbsp; &nbsp;Return 0
+End</pre><h2>Example</h2><pre class="prettyprint notranslate prettyprinted" style=""><span class="com">#include</span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="com">#include</span><span class="str">&lt;conio.h&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">(</span><span class="kwd">void</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+&nbsp; &nbsp;</span><span class="kwd">float</span><span class="pln"> a</span><span class="pun">[</span><span class="lit">10</span><span class="pun">][</span><span class="lit">10</span><span class="pun">],</span><span class="pln"> b</span><span class="pun">[</span><span class="lit">10</span><span class="pun">],</span><span class="pln"> m</span><span class="pun">[</span><span class="lit">10</span><span class="pun">],</span><span class="pln"> n</span><span class="pun">[</span><span class="lit">10</span><span class="pun">];</span><span class="pln">
+&nbsp; &nbsp;</span><span class="kwd">int</span><span class="pln"> p </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> q </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp;cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Enter size of 2D array : "</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp;cin </span><span class="pun">&gt;&gt;</span><span class="pln"> p</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp;</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> p</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+&nbsp; &nbsp; &nbsp; </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> j </span><span class="pun">&lt;</span><span class="pln"> p</span><span class="pun">;</span><span class="pln"> j</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"a["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">", "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> j </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" ]="</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cin </span><span class="pun">&gt;&gt;</span><span class="pln"> a</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">j</span><span class="pun">];</span><span class="pln">
+&nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln">
+&nbsp; &nbsp;</span><span class="pun">}</span><span class="pln">
+&nbsp; &nbsp;cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"\nEnter values to the right side of equation\n"</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp;</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> p</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+&nbsp; &nbsp; &nbsp; cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"b["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">", "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> j </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" ]="</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; &nbsp; cin </span><span class="pun">&gt;&gt;</span><span class="pln"> b</span><span class="pun">[</span><span class="pln">i</span><span class="pun">];</span><span class="pln">
+&nbsp; &nbsp;</span><span class="pun">}</span><span class="pln">
+&nbsp; &nbsp;cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Enter initial values of x\n"</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp;</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> p</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+&nbsp; &nbsp; &nbsp; cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"x:["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i</span><span class="pun">&lt;&lt;</span><span class="str">"]="</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; &nbsp; cin </span><span class="pun">&gt;&gt;</span><span class="pln"> m</span><span class="pun">[</span><span class="pln">i</span><span class="pun">];</span><span class="pln">
+&nbsp; &nbsp;</span><span class="pun">}</span><span class="pln">
+&nbsp; &nbsp;cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"\nEnter the no. of iteration : "</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp;cin </span><span class="pun">&gt;&gt;</span><span class="pln"> q</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp;</span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">q</span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+&nbsp; &nbsp; &nbsp; </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> p</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;n</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">b</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> a</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">i</span><span class="pun">]);</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> j </span><span class="pun">&lt;</span><span class="pln"> p</span><span class="pun">;</span><span class="pln"> j</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">j </span><span class="pun">==</span><span class="pln"> i</span><span class="pun">)</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="kwd">continue</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; n</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> n</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="pun">((</span><span class="pln">a</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">j</span><span class="pun">]</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> a</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">i</span><span class="pun">])</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> m</span><span class="pun">[</span><span class="pln">j</span><span class="pun">]);</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> n</span><span class="pun">[</span><span class="pln">i</span><span class="pun">];</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="pun">}</span><span class="pln">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cout</span><span class="pun">&lt;&lt;</span><span class="str">"x"</span><span class="pun">&lt;&lt;</span><span class="pln">i </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"="</span><span class="pun">&lt;&lt;</span><span class="pln">n</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]&lt;&lt;</span><span class="str">" "</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln">
+&nbsp; &nbsp; &nbsp; cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"\n"</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; &nbsp; q</span><span class="pun">--;</span><span class="pln">
+&nbsp; &nbsp;</span><span class="pun">}</span><span class="pln">
+&nbsp; &nbsp;</span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre><h2>Output</h2><pre class="result notranslate">Enter size of 2D array : 2
+a[0, 0 ]=1
+a[0, 1 ]=2
+a[1, 0 ]=3
+a[1, 1 ]=4
+
+Enter values to the right side of equation
+b[0, 2 ]=1
+b[1, 2 ]=2
+Enter initial values of x
+x:[0]=0
+x:[1]=0
+
+Enter the no. of iteration : 3
+x1 = 1. x2 = -0.25
+x1 = 1.5 x2 = -0.625
+x1 = 2.25 x2 = -1.1875</pre><div class="clear"></div>
+<div class="mui-panel profile-panel">
+<a href="https://www.tutorialspoint.com/answers/Smita-Kapse" target="_blank" title="raja" class="mui--pull-left">
+<img class="profile" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/60_103706-1512718957.jpg" alt="raja">
+</a>  
+<div class="qa_author">
+<a href="https://www.tutorialspoint.com/answers/Smita-Kapse" target="_blank"><span>Smita Kapse</span></a> 
+</div> 	
+<div class="qa_answer_dtm">
+Published on 30-Apr-2019 08:23:10</div>
+<div class="author-caret">
+<a href="https://www.tutorialspoint.com/answers/Smita-Kapse" target="_blank">
+<i class="fal fa-chevron-circle-right"></i>
+</a>
+</div>					
+</div>   
+<div class="mui-container-fluid button-borders show">
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/questions/index.php"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+<a class="hide-on-mobile" href="javascript:printPage();"><i class="fa fa-print"></i> Print Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/cplusplus-program-to-implement-circular-queue">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="google-bottom-ads" id="google-bottom-ads">
+<div>Advertisements</div>
+<div>
+<div id="adp_bottom_ads"><div id="00000001-9279d2d7-aa00-429b-93fa-d6d80dbd2adb" class="_ap_apex_ad" data-section="00000001-9279d2d7-aa00-429b-93fa-d6d80dbd2adb" data-orig-id="e7ddd6f7-1ab0-494a-bade-887daa4373a0" data-render-time="1628828188391" style="text-align: center; margin: 10px auto; width: 580px; height: 400px; overflow: hidden; display: block;" data-ap-network="adpTags"><div id="ADP_40046_580x400_00000001-9279d2d7-aa00-429b-93fa-d6d80dbd2adb" style="text-align: center; margin: 0 auto;" data-google-query-id="CJvmyvCRrfICFZ2UZgIdmC4Jxw">
+
+<div id="google_ads_iframe_/103512698/ADP_40046_580X400_e7ddd6f7-1ab0-494a-bade-887daa4373a0_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/103512698/ADP_40046_580X400_e7ddd6f7-1ab0-494a-bade-887daa4373a0_0" title="3rd party ad content" name="google_ads_iframe_/103512698/ADP_40046_580X400_e7ddd6f7-1ab0-494a-bade-887daa4373a0_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" srcdoc="" data-google-container-id="3" __idm_frm__="21474836486" data-load-complete="true" width="250" height="250" frameborder="0"></iframe></div></div></div></div>
+<script>
+var adPos = document.getElementById('adp_bottom_ads');
+var mobile_ad_id = "a8a632a6-046e-4f5c-b25f-8bc82ac89fb2";
+var desktop_ad_id = "e7ddd6f7-1ab0-494a-bade-887daa4373a0";
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+var ad_id = window.innerWidth <= 768 ? mobile_ad_id : desktop_ad_id;
+adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+adpushup.triggerAd(ad_id);
+});
+</script>
+</div>
+<div class="space-bottom"></div>
+</div>
+</div>
+<!-- Tutorial Content Ends Here -->
+<div class="mui-col-md-2 google-right-ads" id="chapter-menu" style="display: none;">
+<input type="hidden" id="vu" name="vu" value="">
+<div class="space-top"></div>
+<div class="mui-panel">
+<ul class="paid-menu" id="div-right-menu">
+<li><a class="hide-on-mobile" href="javascript:printPage();" title="Print this page"><i class="fa fa-print"></i> Print</a></li>
+<li><a href="javascript:void(0)" class="add_notes" title="Add Custom Notes" onclick="add_notes();"><i class="fa fa-edit"></i>&nbsp;Add Notes</a></li>
+<li><a href="javascript:void(0)" class="clsPage text-bookmark" id="text-bookmark" title="Add Bookmark" onclick="text_bookmark()"><i class="fal fa-bookmark"></i>&nbsp;Bookmark this page </a></li>
+<li><a href="javascript:void(0);" id="report_error_popup" onclick="report_error_popup();" title="Report Error"><i class="fal fa-bell"></i>&nbsp;Report Error</a></li>
+<li><a href="javascript:void(0);" id="suggestion_popup" title="Give Suggestions" onclick="suggestion_popup();"><i class="fal fa-badge-check"></i>&nbsp;Suggestions</a></li>
+</ul>
+<div class="profile-my-notes" id="text_notes_div" style="display:none;">
+<textarea rows="10" class="text_notes" id="text_notes" name="text_notes" placeholder="Enter your custom notes..."></textarea>
+<br>
+<a href="javascript:void(0);" id="submit_text_notes" class="butn-save" onclick="submit_text_notes();"> Save</a>
+<a href="javascript:void(0);" class="pop-no butn-cancel" onclick="notesClose();"> Close</a>
+<p class="notes_msg"></p>
+</div>
+<div class="bottom-menu">
+<button class="tp-btn"><i class="fal fa-box-up"></i> <a href="https://www.tutorialspoint.com/market/student/dashboard.jsp">Dashboard</a></button>
+<button class="tp-btn" id="btnLogout"><i class="fal fa-sign-out-alt"></i><a href="javascript:void(0)">Logout</a></button>
+</div>
+</div>
+</div>
+<div class="mui-col-md-2 google-right-ads" id="google-right-ads">
+<div class="space-top"></div>
+<div class="google-right-ad" style="margin: 0px auto !important;margin-top:5px;min-height:250px!important">
+<div id="00000001-18a8b1c1-d4da-433b-b70a-56994969d7f2" class="_ap_apex_ad" data-section="00000001-18a8b1c1-d4da-433b-b70a-56994969d7f2" data-orig-id="f0f6cff6-393d-4170-b63a-d9ff06ca9f25" data-render-time="1628828188397" style="text-align: center; margin: 10px auto; width: 300px; height: 250px; overflow: hidden; display: block;" data-ap-network="adpTags" data-refresh-time="1628828363499" data-timeout="1406">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("f0f6cff6-393d-4170-b63a-d9ff06ca9f25");
+});
+</script>
+<div id="ADP_40046_300x250_00000001-18a8b1c1-d4da-433b-b70a-56994969d7f2" style="text-align: center; margin: 0 auto;" data-google-query-id="CL6m38KSrfICFcigZgIdIFkHKQ">
+
+<div id="google_ads_iframe_/103512698/21871305451_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/103512698/21871305451_0" title="3rd party ad content" name="google_ads_iframe_/103512698/21871305451_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" srcdoc="" data-google-container-id="c" __idm_frm__="21474836545" data-load-complete="true" width="300" height="250" frameborder="0"></iframe></div></div></div>
+</div>
+<div class="google-right-ad" style="margin-top:16px;min-height:250px!important">
+<div id="00000001-f78eef96-2885-4ecb-9fad-e373bd6117b7" class="_ap_apex_ad" data-section="00000001-f78eef96-2885-4ecb-9fad-e373bd6117b7" data-orig-id="5c0affd5-724a-475c-bfcd-cecbc7660c36" data-render-time="1628828188404" style="text-align: center; margin: 10px auto; width: 300px; height: 250px; overflow: hidden; display: block;" data-ap-network="adpTags" data-refresh-time="1628828395816" data-timeout="1882">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("5c0affd5-724a-475c-bfcd-cecbc7660c36");
+});
+</script>
+<div id="ADP_40046_300x250_00000001-f78eef96-2885-4ecb-9fad-e373bd6117b7" style="text-align: center; margin: 0 auto;" data-google-query-id="CLbYkdKSrfICFYKMZgIdSZQHQQ">
+
+<div id="google_ads_iframe_/103512698/21871305739_0__container__" style="border: 0pt none; display: inline-block; width: 300px; height: 250px;"><iframe style="border: 0px none; vertical-align: bottom;" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/container_003.htm" id="google_ads_iframe_/103512698/21871305739_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" data-google-container-id="b" data-load-complete="true" width="300" height="250" frameborder="0"></iframe></div></div></div>
+</div>
+<div class="google-right-ad" style="margin-top:16px;margin-bottom:15px;min-height:600px!important">
+<div id="00000001-6bfed1d9-f45c-4831-9faf-7d6639cd0fa8" class="_ap_apex_ad" data-section="00000001-6bfed1d9-f45c-4831-9faf-7d6639cd0fa8" data-orig-id="8f8814c2-d64c-4d26-9cb9-543653c0b48f" data-render-time="1628828188412" style="text-align: center; margin: 10px auto; width: 300px; height: 600px; overflow: hidden; display: block;" data-ap-network="adpTags">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("8f8814c2-d64c-4d26-9cb9-543653c0b48f");
+});
+</script>
+<div id="ADP_40046_300x600_00000001-6bfed1d9-f45c-4831-9faf-7d6639cd0fa8" style="text-align: center; margin: 0 auto;" data-google-query-id="CJ7myvCRrfICFZ2UZgIdmC4Jxw">
+
+<div id="google_ads_iframe_/103512698/21875371402_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/103512698/21875371402_0" title="3rd party ad content" name="google_ads_iframe_/103512698/21875371402_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" srcdoc="" data-google-container-id="6" __idm_frm__="21474836488" data-load-complete="true" width="300" height="600" frameborder="0"></iframe></div></div></div>
+</div>
+<div class="space-bottom" style="margin-bottom:15px;"></div>
+</div>
+<!-- Right Column Ends Here -->
+</div>
+</div>
+<div class="clear"></div>
+<footer id="footer">
+<div class="mui--text-center">
+<div class="mui--text-caption mui--text-light">
+<a href="https://www.tutorialspoint.com/index.htm" class="logo"><img class="img-responsive" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/logo-black.png" alt="Tutorials Point" title="Tutorials Point"></a>
+</div>
+<ul class="mui-list--inline mui--text-body2 mui--text-light">
+<li><a href="https://www.tutorialspoint.com/about/index.htm"><i class="fal fa-globe"></i> About us</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_terms_of_use.htm"><i class="fal fa-asterisk"></i> Terms of use</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_privacy.htm#cookies"> <i class="fal fa-shield-check"></i> Cookies Policy</a></li>
+<li><a href="https://www.tutorialspoint.com/about/faq.htm"><i class="fal fa-question-circle"></i> FAQ's</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_helping.htm"><i class="fal fa-hands-helping"></i> Helping</a></li>
+<li><a href="https://www.tutorialspoint.com/about/contact_us.htm"><i class="fal fa-map-marker-alt"></i> Contact</a></li>
+</ul>
+<div class="mui--text-caption mui--text-light bottom-copyright-text">© Copyright 2021. All Rights Reserved.</div>
+</div>
+<script async="" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/js"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-232293-17');
+</script>
+<script src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/text_menu.js"></script>
+<script>
+$(document).ready(function (){
+    var cval = readCookie('subscription_purchased');
+    if(cval == '1'){
+          // logged in and purchased subscription.
+          $('#google-right-ads').remove();
+          $('#adp1').remove();
+          $('#adp2').remove();
+          $('#stickyparent').remove();
+          $('#google-top-ads').remove();
+          $('#adp_top_ads').remove();
+          $('#google-bottom-ads').remove();
+          $('.tutorial-content hr').remove();
+          $('.login').remove();
+          $('#chapter-menu').show();
+          $('.content h1').css("border-bottom", "none");
+          $('.google-right-ads').css("padding-right", "0px");
+          $('.tutorial-content').css("border-radius", "10px");
+          $('#chapter-menu .mui-panel').css("border-radius", "10px");
+     }
+     $(document).on("click", "#btnLogout", function(){
+       $.ajax({
+           type: 'GET',
+           dataType: 'JSON',
+           cache: false,
+           url: "https://www.tutorialspoint.com/market/logout.jsp",
+           complete: function (xhr, statusText) {
+               if(xhr.status == 200) {
+                   window.location.href = 'https://www.tutorialspoint.com/index.htm'
+               } else {
+                   console.log("something went wrong");
+               }
+           }
+       });
+    });
+});
+</script><iframe src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/container_003.htm" style="visibility: hidden; display: none;"></iframe>
+</footer>
+
+
+<iframe src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/IL_.htm" style="display: none; width: 0px; height: 0px;"></iframe><iframe src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/syncframe.htm" id="criteo-syncframe" style="display: none;"></iframe><iframe id="google_osd_static_frame_696371138105" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe><iframe src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/aframe.htm" style="display: none;" width="0" height="0"></iframe><div id="criteoUserSyncTagsContainer" style="display: none;"><img src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/cri_002.txt"><img src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/sync.gif"><img src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/cri.txt"><img src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/sync_003.gif"><img src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/cri_003.txt"><img src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/sync_002.gif"><img src="https://match.prod.bidr.io/cookie-sync/cri?r=https%3a%2f%2f3pd.criteo.com%2fuser-sync%2fmatch%3fp%3d5YGcXl9jNlpEZUE0JTJCTTNwTWdLbHZ6N0x0RE5zRGJBUFR4UzRjWTBHUm94ektGQ2slM0Q%26u%3d%24%7bUSER_ID%7d&amp;gdpr=false&amp;consent=&amp;ccpa="><img src="https://x.bidswitch.net/sync?ssp=criteo&amp;custom_data=4xb2W19MTnRjQ1Ewd1I5cHR4bU94cEJMTHhHN0N1eTVEMDV1blUxOFlUaGxDbEZjJTNE&amp;gdpr=false&amp;gdpr_consent=&amp;us_privacy="></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><iframe sandbox="allow-scripts allow-same-origin" id="131047197fe2bcd08" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://jp-u.openx.net/w/1.0/pd?plm=6&amp;ph=43a9730a-6c22-4066-b849-41c7558b6858&amp;gdpr=0" width="0" height="0" frameborder="0">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="13270751b215ba198" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/ixmatch.htm" width="0" height="0" frameborder="0">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="1336adf1bec40d5b" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/usync.htm" width="0" height="0" frameborder="0">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="1348b605a46073e98" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/sync.htm" width="0" height="0" frameborder="0">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="13517d3301245ed9" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/a_002.htm" width="0" height="0" frameborder="0">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="136d93579a8237eb" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/async_usersync.htm" width="0" height="0" frameborder="0">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="13766fd4ae16de358" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="C++%20Program%20to%20Implement%20Gauss%20Seidel%20Method_files/user_sync.htm" width="0" height="0" frameborder="0">
+    </iframe></html>
