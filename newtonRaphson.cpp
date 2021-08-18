@@ -1,11 +1,11 @@
-// C++ program for implementation of Newton Raphson Method for
-// solving equations
 #include<bits/stdc++.h>
 #define EPSILON 0.001
 using namespace std;
 
-// An example function whose solution is determined using
-// Bisection Method. The function is x^3 - x^2 + 2
+/**
+* An example function whose solution is determined using
+* Bisection Method. The function is x^3 - x^2 + 2
+*/
 double func(double x)
 {
 	return x*x*x - x*x + 2;
@@ -35,7 +35,11 @@ void newtonRaphson(double x)
 // Driver program to test above
 int main()
 {
-	double x0 = -20; // Initial values assumed
+	double x0 ;
+
+	cout<<"Guess a value : ";
+	cin>>x0;
+
 	newtonRaphson(x0);
 	return 0;
 }
